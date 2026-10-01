@@ -55,6 +55,48 @@ dialog{max-height:88vh;max-width:1000px;width:calc(100% - 32px);overflow:auto}di
 @media(max-width:760px){.workspace{grid-template-columns:1fr}.controls{grid-template-columns:repeat(2,1fr);gap:13px 22px}.controls .reference{grid-column:1/-1}.run-controls{grid-column:1/-1}.stage{min-height:0;aspect-ratio:720/560}.compensation{border-top:1px solid var(--line);padding:16px 0}.exchange-details{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}.exchange-details .mini-dl{grid-column:2;grid-row:1/4}.exchange-details .response-copy{grid-column:1/-1}.compensation .outcome{margin-top:14px}.phys-details .mini-dl{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}.phys-details .mini-dl>div{display:block}.phys-details .mini-dl dd{text-align:left;margin-top:5px}.view-bar{align-items:flex-start}.view-bar>p{max-width:155px}.result-strip{flex-direction:column;align-items:flex-start;gap:9px}.pending-strip{display:block}.heat-budget dl{grid-template-columns:repeat(3,1fr)}.heat-budget dl>div{border-left:1px solid var(--line);padding-left:10px!important}.heat-budget dl>div:nth-child(3n+1){border-left:0;padding-left:0!important}.heat-budget dt{font-size:.8125rem;min-height:2.7em}.history-heading{align-items:flex-start;flex-direction:column;gap:5px}.reference-strip{align-items:flex-start}.equation{text-align:left}.equation p{max-width:none}.masthead{gap:9px}}
 @media(max-width:470px){.app{padding:14px 12px}.view-bar{display:block}.view-bar>p{text-align:left;max-width:none;margin:8px 0 0}.tabs button{font-size:.8125rem;padding:8px 10px}.exchange-details{display:block}.phys-details .mini-dl{gap:0 18px}.compensation .mini-dl dt{font-size:.8125rem}.phys-details .mini-dl dd{font-size:.95rem}.stage{aspect-ratio:720/610}.heat-budget dl{grid-template-columns:repeat(3,1fr)}.heat-budget dl>div:nth-child(2n+1){border-left:1px solid var(--line)}.heat-budget dl>div:nth-child(3n+1){border-left:0}.heat-budget dd{font-size:1.2rem}.heat-budget small{font-size:.6875rem}.heat-budget dt{font-size:.75rem}.reference-strip{display:block}.reference-strip button{margin-top:6px}.history th,.history td{font-size:.75rem;padding:7px 5px}.prompt-select{align-items:flex-start;flex-direction:column;gap:5px}.history{margin-top:15px}.chart-legend{gap:12px}.footer-bottom{display:block}.footer-bottom button{margin-top:9px;text-align:left}.stage .flow-direction{font-size:20px}.compensation .outcome{grid-column:auto}.phys-detail{font-size:20px}}
 
+/* Gate 1B: action order and a compact shared outcome; all scientific SVG/graph styles retained. */
+.controls > .run-controls + .reference{margin-top:12px}
+.endpoint-temperatures h3{font-size:.8125rem;font-weight:500;line-height:1.4;margin:0 0 7px}
+.endpoint-temperatures dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0}
+.endpoint-temperatures dt{font-size:.8125rem;line-height:1.35}
+.endpoint-temperatures dd{margin:2px 0 0;font-size:1.35rem;font-weight:600;line-height:1.25;font-variant-numeric:tabular-nums;white-space:nowrap}
+.compensation > .exchange-details,.compensation > .phys-details{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+@media(max-width:1000px){.controls > .run-controls,.controls > .reference{grid-column:1/-1}.controls > .run-controls + .reference{margin-top:0}}
+
+
+/* Gate 1C: bounded figure inspection, annotation fit, graph type and masthead reflow. */
+.masthead>div{min-width:0;max-width:100%}
+.masthead h1{overflow-wrap:anywhere}
+.masthead .equation{white-space:normal}
+.masthead .equation>div{max-width:100%}
+.visual-top{flex-wrap:wrap}
+.visual-top #stage-time{font-size:.75rem;color:var(--slate)}
+#inspect-figure{min-height:36px}
+.figure-presentation{display:flex;flex-direction:column;flex:1;min-height:0;min-width:0}
+.figure-pan{display:contents}
+.chart-legend,.chart-note,.legend,.visual-note{font-size:14px}
+#figure-inspector{box-sizing:border-box;width:calc(100% - 16px);max-width:1280px;max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px);padding:16px;border:1px solid var(--line);overflow-y:auto;overflow-x:hidden;background:var(--ivory);color:var(--ink);font-size:16px;line-height:1.5;overscroll-behavior:contain}
+#figure-inspector h2{font-size:1.35rem;line-height:1.3;margin:12px 0}
+#figure-inspector p{margin:10px 0;overflow-wrap:anywhere}
+.inspector-close-row{position:sticky;top:0;z-index:5;display:flex;justify-content:flex-end;pointer-events:none;height:auto}
+#close-figure{pointer-events:auto;min-height:36px;background:var(--ivory);max-width:100%}
+#figure-inspector .figure-presentation{display:block;max-width:1200px;margin:0 auto}
+#figure-inspector .figure-pan{display:block;width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+#figure-inspector .stage{flex:none;width:100%;min-width:720px;max-width:1200px;height:auto;min-height:0;aspect-ratio:720/560}
+#figure-inspector .legend{padding:10px 0;flex-wrap:wrap}
+#figure-inspector .visual-note{padding:0}
+#figure-inspector .figure-pan:focus-visible,#figure-inspector summary:focus-visible{outline:3px solid var(--teal);outline-offset:-3px}
+#figure-values{font-size:16px;line-height:1.5;margin:16px 0 8px}
+#figure-values summary{cursor:pointer;padding:8px 0}
+#figure-values dl{margin:8px 0}
+#figure-values dt{font-weight:600;margin-top:12px}
+#figure-values dd{margin:3px 0 12px;overflow-wrap:anywhere}
+@media(max-width:767px){#figure-inspector{padding:8px}}
+
+@media(min-width:1001px){.figure-presentation{container-type:inline-size}.figure-presentation .stage{min-height:calc(100cqw * 560 / 720)}}
+/* RC3: main-page wide-screen balance; ease into the 980px cap from 1600 to 1636px. */
+@media(min-width:1600px){.visual > .figure-presentation{width:100%;max-width:clamp(980px,calc(2616px - 100vw),1016px);align-self:center}}
 </style><!-- Embedded typeface licenses
 Copyright © 2017 IBM Corp. with Reserved Font Name "Plex"
 
@@ -261,12 +303,12 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 <div class="control"><div class="control-label"><label for="wind">Air movement</label><output id="wind-value" for="wind">0.1 m/s</output></div><input id="wind" type="range" min="0" max="4" step="0.1" value="0.1"><div class="range-ends"><span>Still · 0</span><span>4 m/s</span></div></div>
 <div class="control activity-control"><label for="activity">Activity</label><select id="activity"><option value="rest">Rest · 115 W</option><option value="light">Light · 230 W</option><option value="moderate">Moderate · 400 W</option><option value="heavy">Heavy · 600 W</option></select></div>
 
-<div class="reference"><p>Same person. Same light clothing.</p><span>70 kg · 1.8 m² · clothing fixed at 0.5 clo<br>Core and skin temperatures evolve.</span></div>
 <div class="run-controls"><button type="button" class="action primary run-action" id="run-exposure">Run exposure · 60 min</button><p class="control-hint" id="control-hint">Changing a control prepares the next run. Every exposure resets to the same initial state.</p></div>
+<div class="reference"><p>Same person. Same light clothing.</p><span>70 kg · 1.8 m² · clothing fixed at 0.5 clo<br>Core and skin temperatures evolve.</span></div>
 <div id="wind-chill-panel" class="wind-chill" hidden><div><span>Run wind chill</span><strong id="wind-chill-value">—</strong><button type="button" id="wind-info" class="info" aria-label="About contextual wind chill">i</button></div><p id="wind-chill-note">Context only · air temperature is unchanged.</p></div>
 </section>
-<section class="visual" aria-label="Two views of the same reference adult"><div class="visual-top"><span id="environment-caption">Illustrative surroundings</span><span id="stage-time">Run an exposure to see rates</span></div>
-<div class="stage" id="stage">
+<section class="visual" aria-label="Two views of the same reference adult"><div class="visual-top"><span id="environment-caption">Illustrative surroundings</span><span id="stage-time">Run an exposure to see rates</span><button type="button" class="action" id="inspect-figure" aria-haspopup="dialog" aria-controls="figure-inspector" aria-describedby="inspect-figure-description">Inspect figure</button></div><span class="sr-only" id="inspect-figure-description">Open a larger view of the displayed scientific figure.</span>
+<div class="figure-presentation" id="figure-presentation"><div class="figure-pan" id="figure-pan"><div class="stage" id="stage">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" fill="none" role="img" aria-labelledby="stage-title stage-description">
   <title id="stage-title">The same standardized adult in changing environments</title>
   <desc id="stage-description">An editable vector illustration. A person in a short-sleeved shirt, lightweight trousers and shoes stands in a quiet central space. Separate environmental layers depict an indoor room, temperate park, arid landscape, lush vegetation, bare cold landscape and snow-covered ground.</desc>
@@ -460,34 +502,52 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 <g class="flow-label" id="convection-label" transform="translate(515 188)"><rect width="192" height="104" rx="4"/><text x="13" y="27" class="flow-name">Convection <tspan class="symbol">C</tspan></text><text x="13" y="61" id="convection-value" class="flow-value">40 W</text><text x="13" y="86" id="convection-direction" class="flow-direction">Outward · heat loss</text></g>
 <g class="flow-label" id="evaporation-label" transform="translate(14 361)"><rect width="195" height="124" rx="4"/><text x="13" y="27" class="flow-name">Evaporation <tspan class="symbol">E</tspan></text><text x="13" y="61" id="evaporation-value" class="flow-value">19 W</text><text x="13" y="86" id="evaporation-direction" class="flow-direction">Outward · heat loss</text><text x="13" y="108" class="flow-small">Sweat + diffusion</text></g>
 <g class="flow-label" id="conduction-label" transform="translate(512 441)"><rect width="195" height="96" rx="4"/><text x="13" y="26" class="flow-name">Conduction <tspan class="symbol">K</tspan></text><text x="13" y="58" id="conduction-value" class="flow-value">≈0 W</text><text x="13" y="81" class="flow-small">Contact ≈ 0</text></g>
-<g class="metabolic-label" transform="translate(278 267)"><rect width="164" height="93" rx="4"/><text x="82" y="23" text-anchor="middle">METABOLIC HEAT</text><text x="82" y="55" text-anchor="middle" id="metabolic-value">M = 115 W</text><text x="82" y="78" text-anchor="middle" id="metabolic-detail">Activity + shivering</text></g>
+<g class="metabolic-label" id="metabolic-label" transform="translate(278 267)"><rect width="164" height="93" rx="4"/><text x="82" y="23" text-anchor="middle">METABOLIC HEAT</text><text x="82" y="55" text-anchor="middle" id="metabolic-value">M = 115 W</text><text x="82" y="78" text-anchor="middle" id="metabolic-detail">Activity + shivering</text></g>
 </svg><svg class="phys-overlay" id="phys-overlay" viewBox="0 0 720 560" role="img" aria-labelledby="phys-title phys-desc" hidden>
 <title id="phys-title">Core, skin and internal heat transfer</title><desc id="phys-desc">The core and mean skin are two model compartments, not anatomical measurements. Readouts show the current completed exposure. Teal links identify internal heat transfer; the heat budget lists external exchange.</desc>
-<path class="phys-link" d="M326 227 Q280 249 223 278"/><path class="phys-link" d="M397 227 Q466 232 505 257"/>
-<g transform="translate(263 180)"><rect class="core-node" width="194" height="91" rx="4"/><text x="97" y="28" text-anchor="middle" class="phys-label">Core temperature</text><text x="97" y="66" text-anchor="middle" class="phys-value" id="avatar-core">—</text></g>
-<g transform="translate(14 266)"><rect width="213" height="110" rx="4"/><text x="13" y="28" class="phys-label">Mean skin</text><text x="13" y="66" class="phys-value" id="avatar-skin">—</text><text x="13" y="94" class="phys-detail">Whole-body average</text></g>
-<g transform="translate(487 253)"><rect width="219" height="124" rx="4"/><text x="13" y="27" class="phys-label" id="avatar-transfer-label">Core → skin</text><text x="13" y="63" class="phys-value" id="avatar-transfer">—</text><text x="13" y="89" class="phys-detail">Blood + tissue</text><text x="13" y="112" class="phys-detail">Internal heat transfer</text></g>
-<g transform="translate(207 422)"><rect width="306" height="85" rx="4"/><text x="153" y="27" text-anchor="middle" class="phys-label">Clothing surface</text><text x="153" y="64" text-anchor="middle" class="phys-value" id="avatar-clothing">—</text></g>
-</svg></div><div class="legend" id="exchange-legend"><span class="loss-key">Outward = heat loss</span><span class="gain-key">Inward = heat gain</span><span>Thicker arrow = larger rate*</span></div><p class="visual-note" id="visual-note">Illustrative surroundings · no direct sun · fixed clothing insulation.</p></section>
-<section class="compensation" aria-labelledby="compensation-title"><h2 id="compensation-title">Physiological effort &amp; outcome</h2><p class="response-time" id="response-time">Rates appear after a completed exposure.</p>
+<path class="phys-link" id="skin-link" d="M326 227 Q280 249 223 278"/><path class="phys-link" id="transfer-link" d="M397 227 Q466 232 505 257"/>
+<g id="core-label" transform="translate(263 180)"><rect class="core-node" width="194" height="91" rx="4"/><text x="97" y="28" text-anchor="middle" class="phys-label">Core temperature</text><text x="97" y="66" text-anchor="middle" class="phys-value" id="avatar-core">—</text></g>
+<g id="skin-label" transform="translate(14 266)"><rect width="213" height="110" rx="4"/><text x="13" y="28" class="phys-label">Mean skin</text><text x="13" y="66" class="phys-value" id="avatar-skin">—</text><text x="13" y="94" class="phys-detail">Whole-body average</text></g>
+<g id="transfer-label" transform="translate(487 253)"><rect width="219" height="124" rx="4"/><text x="13" y="27" class="phys-label" id="avatar-transfer-label">Core → skin</text><text x="13" y="63" class="phys-value" id="avatar-transfer">—</text><text x="13" y="89" class="phys-detail">Blood + tissue</text><text x="13" y="112" class="phys-detail">Internal heat transfer</text></g>
+<g id="clothing-label" transform="translate(207 422)"><rect width="306" height="85" rx="4"/><text x="153" y="27" text-anchor="middle" class="phys-label">Clothing surface</text><text x="153" y="64" text-anchor="middle" class="phys-value" id="avatar-clothing">—</text></g>
+</svg></div></div><div class="legend" id="exchange-legend"><span class="loss-key">Outward = heat loss</span><span class="gain-key">Inward = heat gain</span><span>Thicker arrow = larger rate*</span></div><p class="visual-note" id="visual-note">Illustrative surroundings · no direct sun · fixed clothing insulation.</p></div></section>
+<section class="compensation" aria-labelledby="compensation-title"><h2 id="compensation-title">Physiological effort &amp; outcome</h2><p class="response-time" id="response-time">Values appear after a completed exposure.</p>
+<section class="endpoint-temperatures" id="endpoint-temperatures" aria-labelledby="endpoint-temperatures-title" hidden>
+<h3 id="endpoint-temperatures-title">Modelled temperatures · at 60 min</h3>
+<dl><div><dt>Core</dt><dd id="phys-core">—</dd></div><div><dt>Mean skin</dt><dd id="phys-skin">—</dd></div></dl>
+</section>
+<div class="outcome" id="outcome"><p class="response-time" id="storage-metric" hidden>Whole-body net heat-storage rate · at 60 min</p><div><h3 id="balance-status">Predict, then run</h3><strong id="storage-value">S = — W</strong></div><p id="balance-explanation">Observe how temperatures and physiological responses develop during the same 60-minute exposure.</p><p id="model-status">Modelled teaching responses—not individual predictions.</p></div><p class="boundary" id="boundary" hidden></p>
 <div class="exchange-details" id="exchange-details">
-<div class="comparison"><div class="metric"><div><label for="capacity-meter">Fully wet evaporative capacity</label><strong id="capacity-value">—</strong></div><meter id="capacity-meter" min="0" max="1000" value="0">No run</meter></div>
+<div class="comparison"><div class="metric"><div><label for="capacity-meter">Fully wet evaporative potential</label><strong id="capacity-value">—</strong></div><meter id="capacity-meter" min="0" max="1000" value="0" aria-describedby="capacity-qualifier">No run</meter><p class="response-copy" id="capacity-qualifier">Before the wettedness limit</p></div>
 <div class="metric"><div><label for="evaporation-meter">Modelled skin evaporation</label><strong id="evaporation-total">—</strong></div><meter id="evaporation-meter" min="0" max="1000" value="0">No run</meter></div><p class="scale-note" id="meter-scale">Shared 0–1,000 W scale · total skin evaporation includes diffusion.</p></div>
 <dl class="mini-dl"><div><dt>Sweat secretion</dt><dd id="secretion-value">—</dd></div><div><dt>Evaporated sweat</dt><dd id="evaporated-value">—</dd></div><div><dt>Cooling from sweat</dt><dd id="sweat-cooling">—</dd></div><div><dt>Skin diffusion</dt><dd id="diffusion-value">—</dd></div><div><dt>Shivering heat</dt><dd id="shivering-value">—</dd></div></dl>
-<p class="response-copy">Secretion is the controller’s output. Only evaporated sweat cools the skin. The model also limits skin wettedness; fully wet capacity is not automatically achieved.</p></div>
-<div class="phys-details" id="phys-details" hidden><dl class="mini-dl"><div><dt>Core temperature</dt><dd id="phys-core">—</dd></div><div><dt>Mean skin temperature</dt><dd id="phys-skin">—</dd></div><div><dt>Skin blood-flow variable</dt><dd id="phys-blood">—</dd></div><div><dt>Core → skin heat transfer</dt><dd id="phys-transfer">—</dd></div><div><dt>Shivering heat</dt><dd id="phys-shivering">—</dd></div><div><dt>Sweat secretion</dt><dd id="phys-secretion">—</dd></div><div><dt>Evaporated sweat</dt><dd id="phys-evaporated">—</dd></div><div><dt>Total skin evaporation</dt><dd id="phys-evaporation">—</dd></div></dl><p class="response-copy">Vasomotion changes internal heat transfer and the model’s effective skin heat capacity. Skin temperature then affects exchange through the clothing. Blood flow is a whole-body model variable, not a clinical measurement.</p></div>
-<div class="outcome" id="outcome"><div><h3 id="balance-status">Predict, then run</h3><strong id="storage-value">S = — W</strong></div><p id="balance-explanation">Observe how temperatures and physiological responses develop during the same 60-minute exposure.</p></div><p class="boundary" id="boundary" hidden></p>
+<p class="response-copy">Secretion is the controller’s output. Only evaporated sweat cools the skin. The model also limits skin wettedness; fully wet potential is not automatically achieved.</p></div>
+<div class="phys-details" id="phys-details" hidden><dl class="mini-dl"><div><dt>Skin blood-flow variable</dt><dd id="phys-blood">—</dd></div><div><dt>Core → skin heat transfer</dt><dd id="phys-transfer">—</dd></div><div><dt>Shivering heat</dt><dd id="phys-shivering">—</dd></div><div><dt>Sweat secretion</dt><dd id="phys-secretion">—</dd></div><div><dt>Evaporated sweat</dt><dd id="phys-evaporated">—</dd></div><div><dt>Total skin evaporation</dt><dd id="phys-evaporation">—</dd></div></dl><p class="response-copy">Vasomotion changes internal heat transfer and the model’s effective skin heat capacity. Skin temperature then affects exchange through the clothing. Blood flow is a whole-body model variable, not a clinical measurement.</p></div>
 </section></div>
 <p class="evidence-line" id="evidence-line">Teaching model · all responses are modelled. Evidence depends on the conditions and output; see model notes.</p>
 <section class="heat-budget" aria-labelledby="budget-title"><div class="budget-heading"><h2 id="budget-title">Heat budget <span id="budget-time"></span></h2><span>Whole-body W · positive exchange = outward · positive S stores heat</span></div><dl>
-<div><dt>Activity heat</dt><dd><span id="budget-activity">—</span><small>Prescribed production</small></dd></div><div><dt>Shivering heat</dt><dd><span id="budget-shivering">—</span><small>Modelled production</small></dd></div><div class="total"><dt>Total M</dt><dd><span id="budget-metabolic">—</span><small id="budget-metabolic-multiple">Activity + shivering</small></dd></div><div><dt>Convection C</dt><dd><span id="budget-convection">—</span><small id="budget-convection-direction">Surface exchange</small></dd></div><div><dt>Radiation R</dt><dd><span id="budget-radiation">—</span><small id="budget-radiation-direction">Surface exchange</small></dd></div><div><dt>Contact K</dt><dd><span id="budget-conduction">—</span><small>Approximated as zero</small></dd></div><div><dt>Skin evaporation E</dt><dd><span id="budget-evaporation">—</span><small>Sweat + diffusion</small></dd></div><div><dt>Respiration Q<sub>res</sub></dt><dd><span id="budget-respiration">—</span><small id="budget-respiration-direction">Sensible + latent</small></dd></div><div class="final"><dt>Net storage rate S</dt><dd><span id="budget-storage">—</span><small id="budget-storage-direction">Instantaneous rate</small></dd></div></dl></section>
+<div><dt>Activity heat</dt><dd><span id="budget-activity">—</span><small>Prescribed production</small></dd></div><div><dt>Shivering heat</dt><dd><span id="budget-shivering">—</span><small>Modelled production</small></dd></div><div class="total"><dt>Total M</dt><dd><span id="budget-metabolic">—</span><small id="budget-metabolic-multiple">Activity + shivering</small></dd></div><div><dt>Convection C</dt><dd><span id="budget-convection">—</span><small id="budget-convection-direction">Surface exchange</small></dd></div><div><dt>Radiation R</dt><dd><span id="budget-radiation">—</span><small id="budget-radiation-direction">Surface exchange</small></dd></div><div><dt>Contact K</dt><dd><span id="budget-conduction">—</span><small>Approximated as zero</small></dd></div><div><dt>Skin evaporation E</dt><dd><span id="budget-evaporation">—</span><small>Sweat + diffusion</small></dd></div><div><dt>Breathing heat exchange Q<sub>res</sub></dt><dd><span id="budget-respiration">—</span><small id="budget-respiration-direction">Sensible + latent</small></dd></div><div class="final"><dt>Whole-body net heat-storage rate S</dt><dd><span id="budget-storage">—</span><small id="budget-storage-direction">Instantaneous rate</small></dd></div></dl></section>
 <section class="history" aria-labelledby="history-title"><div class="history-heading"><h2 id="history-title">Temperature history</h2><p>Same starting state · same 60-minute exposure</p></div><div class="chart-legend"><span><i class="trace-key" aria-hidden="true"></i>Current run · solid</span><span id="reference-key" hidden><i class="trace-key reference" aria-hidden="true"></i>Reference run · dashed</span></div><div class="chart-holder" id="chart-holder"><p class="chart-empty">Run an exposure to follow core and mean skin temperatures.</p></div><p class="chart-note" id="chart-note">Core and skin use separate, labelled temperature scales. Compared runs share the scale within each panel.</p>
 <div id="endpoint-comparison" hidden class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table"></div><details id="history-values" hidden><summary>Read temperature values</summary><div class="table-wrap" tabindex="0" role="region" aria-label="Scrollable table" id="history-table"></div></details></section>
-<footer><div class="teaching"><span class="pause">PREDICT</span><strong>Predict → Change → Observe → Explain</strong><p id="prompt">What changes when humidity increases while temperature and activity stay fixed?</p></div><div class="prompt-select"><label for="prompt-choice">Optional investigation</label><select id="prompt-choice"><option value="humidity">Humidity &amp; sweating</option><option value="wind">Wind &amp; heat exchange</option><option value="activity">Activity &amp; shivering</option><option value="temperatures">Core versus skin</option><option value="blood">Skin blood flow</option></select></div><div class="footer-bottom"><p>Physiological teaching model. Balance does not establish comfort or sustainable thermoregulation. Extreme-condition responses are exploratory. Individual outcomes, dehydration, cold injury and survival are not predicted.</p><button type="button" id="open-notes">Model assumptions, equations &amp; limitations <span aria-hidden="true">↗</span></button></div></footer>
+<footer><div class="teaching"><span class="pause">PREDICT</span><strong>Predict → Change → Observe → Explain</strong><p id="prompt">What changes when humidity increases while temperature and activity stay fixed?</p></div><div class="prompt-select"><label for="prompt-choice">Optional investigation</label><select id="prompt-choice"><option value="humidity">Humidity &amp; sweating</option><option value="wind">Wind &amp; heat exchange</option><option value="activity">Activity &amp; shivering</option><option value="temperatures">Core versus skin</option><option value="blood">Skin blood flow</option></select></div><div class="footer-bottom"><p>Dehydration, cold injury and survival are not predicted.</p><button type="button" id="open-notes">Model assumptions, equations &amp; limitations <span aria-hidden="true">↗</span></button></div><p class="fine" id="authorship">Developed by Dr. Nick Strzalkowski for BIOL3216 using course materials, scientific literature, and iterative design/build support with ChatGPT/OpenAI tools. This is a pedagogical teaching model, not a fully validated clinical or research simulation.</p><p class="fine" id="review-provenance">Interface release: V4.1 · Scientific model: 4.0 · Scientific audit: 1 October 2026</p></footer>
 <p class="sr-only" id="live-summary" role="status" aria-live="polite" aria-atomic="true"></p><noscript>Enable JavaScript to run an exposure. All assets are embedded; no network connection is required.</noscript>
+<dialog id="figure-inspector" aria-labelledby="figure-inspector-title" aria-describedby="figure-inspector-description">
+<div class="inspector-close-row"><button type="button" class="action" id="close-figure" autofocus>Close figure</button></div>
+<h2 id="figure-inspector-title">Inspect figure — Heat Exchange</h2>
+<p id="figure-inspector-description">Larger view of the displayed run. Opening or closing this view does not change the experiment.</p>
+<p id="figure-run-context"></p><p id="figure-pending-context" hidden>Prepared changes are not shown.</p>
+<div id="figure-reference-context" hidden><p id="figure-reference-identity"></p><p>Figure: current run only. The retained reference remains in the temperature histories.</p></div>
+<p id="figure-incomplete-context" hidden></p><p id="figure-model-status"></p>
+<p id="figure-scroll-hint" hidden>Scroll or swipe across the figure. With the figure focused, use the arrow keys.</p>
+<div id="figure-inspector-host"></div>
+<details id="figure-values"><summary>Read figure values</summary><div id="figure-values-content"></div></details>
+</dialog>
 <dialog id="wind-dialog" aria-labelledby="wind-dialog-title"><form method="dialog"><button class="close">Close</button></form><h2 id="wind-dialog-title">Wind chill is context, not air temperature</h2><p>Wind chill estimates how cold exposed skin feels because wind increases heat loss. It is not the actual air temperature and is not used as an input to this heat-balance calculation.</p><p>V4 converts the completed exposure’s air movement from m/s to km/h for the Canadian Wind Chill Index. The index is shown at or below 0°C when wind is greater than zero; a low-wind correction is used below 5 km/h. In calm air it is not calculated.</p><p>The official index uses wind measured at 10 m. This classroom illustration uses the same slider speed for both calculations without a height correction. It is an approximate comparison, not a meteorological or exposure prediction. The index is displayed without a degree symbol.</p></dialog>
 <dialog id="model-notes" aria-labelledby="notes-title"><form method="dialog"><button class="close">Close</button></form>
 <h2 id="notes-title">Model assumptions, equations &amp; limitations</h2>
+<p id="interface-release-status"><b>Interface release · 1 October 2026:</b> V4.1-RC3 was subsequently approved by the instructor as the locked Thermoregulation V4.1 release; scientific model 4.0 is unchanged. The following RC1 review is historical: its graph-label issue was repaired in RC2, and its pending candidate approval no longer describes the current release. Target-context checks not performed remain NOT TESTED.</p>
+<p id="interface-review-status"><b>Interface release-candidate review · 1 October 2026:</b> V4.1-RC1 retains Gate 1B placement and adds Gate 1C figure inspection, annotation-fit and graph-readability changes. Scientific model 4.0 is preserved. Linux Chromium checks passed for source identity, exact Gate 1B numerical regression and inspection state/keyboard behaviour. The 320 px graph has overlapping 45 and 60 min labels under combined user text spacing; a label-position scope decision is required. Native 200%/400% browser zoom, target Mac/phone/projector, spoken screen readers and target-host checks remain outstanding. See the Gate 1C audit for evidence and limits. This candidate awaits instructor review.</p>
+<p id="scientific-review-status"><b>Scientific review status · 1 October 2026:</b> Checkpoints A–C reviewed this V4 scientific model. The independent Checkpoint B audit identified no governing-equation, unit-conversion, integration, or scientific-state error requiring an engine change. Gate 1A changes presentation wording and provenance only; the scientific engine remains model version 4.0. Historical development checks retain their original dates and evidence scope.</p>
 <p>V4 follows an illustrative adult through a standardized 60-minute air exposure. It couples a core compartment with a mean skin compartment. Temperature signals drive modelled vasomotion, shivering and sweating; environmental exchange then changes those temperatures. A small change in core temperature can coexist with substantial physiological effort. Heat-budget balance does not establish comfort or sustainable thermoregulation.</p>
 <details open><summary>1. Model identity, evidence and scope</summary>
 <p><b>Framework:</b> Gagge/Pierce two-node thermoregulation, adapted from <a href="https://github.com/pythermalcomfort/pythermalcomfort/blob/v4.6.0/pythermalcomfort/models/two_nodes_gagge.py" target="_blank" rel="noopener">pythermalcomfort 4.6.0, <code>two_nodes_gagge.py</code></a> (<a href="https://pythermalcomfort.readthedocs.io/en/stable/_modules/pythermalcomfort/models/two_nodes_gagge.html" target="_blank" rel="noopener">readable implementation documentation</a>). The exact package version is pinned in verification. The documentation’s “stable” link may change. The code’s coefficient set is the reference for this adaptation; it is not identical to every publication called “Gagge 1986”.</p>
@@ -803,6 +863,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
  const conditions=p=>`${temp(p.temperature,0)} · ${p.humidity}% RH · ${p.wind.toFixed(1)} m/s · ${p.activity[0].toUpperCase()+p.activity.slice(1)} (${H.activities[p.activity]} W)`;
  const same=(a,b)=>!!a&&!!b&&keys.every(k=>a[k]===b[k]);
  function announce(message){clearTimeout(announcement);announcement=setTimeout(()=>$('live-summary').textContent=message,100);}
+  // Gate 1A presentation wording only. Never mutate the run or its engine evidence.
+  function displayEvidence(run){
+   const oldCold='Exploratory cold exposure—quantitative physiological responses unvalidated.';
+   const oldActivity='Exercise extrapolation: core temperature and sweating have additional uncertainty.';
+   const notes=run.evidence.filter(note=>note!==oldCold&&note!==oldActivity);
+   if(run.inputs.temperature<0)notes.unshift('Exploratory cold results: magnitudes, response timing, and activity interactions are model-dependent.');
+   if(run.status==='complete'&&run.endpoint&&['light','moderate','heavy'].includes(run.inputs.activity)){
+    const activity=run.inputs.activity[0].toUpperCase()+run.inputs.activity.slice(1);
+    notes.push(`Activity extrapolation: ${activity} is outside the sedentary range of the selected human-data comparison; exercise-response accuracy is not established.`);
+   }
+   return notes.length?notes.join(' '):'Modelled responses. The reviewed evidence is strongest for sedentary mean skin temperature; this adapted transient model is not independently validated.';
+  }
   function environment(p){
   // All weights are presentation-only; no scene state is supplied to the model.
   const indoor=Math.exp(-(((p.temperature-22)/5)**2+((p.humidity-40)/28)**2+((p.wind-.1)/.9)**2));
@@ -853,7 +925,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   document.querySelector('.scientific-overlay').hidden=view!=='exchange';
   document.querySelector('.scientific-overlay').style.display=view==='exchange'?'':'none';
   $('phys-overlay').toggleAttribute('hidden',view!=='physiology');$('exchange-details').hidden=view!=='exchange';$('phys-details').hidden=view!=='physiology';$('exchange-legend').hidden=view!=='exchange';
-  $('visual-note').textContent=view==='exchange'?'Illustrative surroundings · no direct sun · fixed clothing insulation. Respiration is included in the budget below.':'Teal links show internal heat transfer · mean skin and clothing-surface temperatures are distinct.';
+  $('visual-note').textContent=view==='exchange'?'Illustrative surroundings · no direct sun · fixed clothing insulation. Breathing heat exchange is included in the budget below.':'Teal links show internal heat transfer · mean skin and clothing-surface temperatures are distinct.';
  }
  const outputIds=['capacity-value','evaporation-total','secretion-value','evaporated-value','sweat-cooling','diffusion-value','shivering-value',
   'phys-core','phys-skin','phys-blood','phys-transfer','phys-shivering','phys-secretion','phys-evaporated','phys-evaporation',
@@ -867,7 +939,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   document.querySelector('.exchange-lines').style.visibility='hidden';
   for(const id of ['capacity-meter','evaporation-meter']){$(id).value=0;$(id).textContent='No completed run';$(id).setAttribute('aria-valuetext','No completed run');}
   setText('budget-metabolic-multiple','Activity + shivering');setText('budget-storage-direction','Instantaneous rate');
-  for(const id of ['convection','radiation','respiration'])setText('budget-'+id+'-direction','Exchange');
+  for(const id of ['convection','radiation','respiration'])setText('budget-'+id+'-direction',id==='respiration'?'Sensible + latent':'Exchange');
  }
  function renderOutputs(r){
   document.querySelector('.exchange-lines').style.visibility='';
@@ -886,15 +958,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   const b={activity:r.activityHeat,...r};
   for(const k of budgetKeys){setText('budget-'+k,k==='storage'?signed(b[k]):k==='conduction'?'≈0':['convection','radiation','respiration'].includes(k)?signed(b[k]):number(b[k]));$('budget-'+k).title=b[k]?.toFixed(3)+' W';}
   setText('budget-metabolic-multiple',(r.metabolic/115).toFixed(1)+'× resting heat production');
-  for(const k of ['convection','radiation','respiration'])setText('budget-'+k+'-direction',zero(r[k])?'Near-zero exchange':r[k]>0?'Outward · loss':'Inward · gain');
-  setText('budget-storage-direction',zero(r.storage)?'Near-zero rate':r.storage>0?'Net accumulation':'Net heat loss');
+  for(const k of ['convection','radiation','respiration'])setText('budget-'+k+'-direction',(k==='respiration'?'Sensible + latent · ':'')+(zero(r[k])?'Near-zero exchange':r[k]>0?'Outward · loss':'Inward · gain'));
+  setText('budget-storage-direction',zero(r.storage)?'Approximately 0 W':r.storage>0?'Net accumulation':'Net heat loss');
   $('outcome').dataset.state=zero(r.storage)?'balance':r.storage>0?'gain':'loss';
-  setText('balance-status',zero(r.storage)?'Near-zero heat storage rate':r.storage>0?'Positive heat storage':'Negative heat storage');
+  setText('balance-status',zero(r.storage)?'Near-zero whole-body heat-storage rate':r.storage>0?'Positive whole-body heat-storage rate':'Negative whole-body heat-storage rate');
   setText('storage-value','S = '+signed(r.storage)+' W');
-  setText('balance-explanation',`Under model assumptions. At 60 min, core has changed ${signed(r.core-36.8,2)}°C and mean skin ${signed(r.skin-33.7,2)}°C. S is the rate at this instant; it does not describe the whole temperature history or establish comfort.`);
+  setText('balance-explanation',`At 60 min, core has changed ${signed(r.core-36.8,2)}°C and mean skin ${signed(r.skin-33.7,2)}°C from the common starting state. S is the whole-body rate at this instant; it does not describe the full temperature history or establish comfort or sustainable thermoregulation.`);
  }
  function renderRun(){
   const r=current?.endpoint;
+  $('storage-metric').hidden=!r;
+  $('endpoint-temperatures').hidden=!r;
   $('keep-run').disabled=!r||busy;setText('keep-run',reference?'Replace reference with this run':'Keep this run for comparison');
   $('reference-strip').hidden=!reference;$('reference-key').hidden=!reference;
   if(reference)$('reference-description').innerHTML=`<strong>Reference · Run ${reference.id} · 60 min</strong><br>${conditions(reference.inputs)}`;
@@ -906,8 +980,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    const time=complete?'60 min':`stopped at ${(current.elapsed/60).toFixed(1)} min`;
    $('current-description').innerHTML=`<strong>${complete?'Current':'Incomplete'} · Run ${current.id} · ${time}</strong><br>${conditions(current.inputs)}`;
    setText('stage-time',complete?'Endpoint · 60 min':'Incomplete exposure');setText('view-time',complete?'Displayed state · 60 min':'No complete endpoint available');
-   setText('response-time',complete?'Endpoint rates · 60 min':'Endpoint rates withheld');setText('budget-time',complete?'· 60 min':'· no complete endpoint');
-   setText('evidence-line',current.evidence.length?current.evidence.join(' '):'Modelled responses. The reviewed evidence is strongest for sedentary mean skin temperature; this adapted transient model is not independently validated.');
+   setText('response-time',complete?'Modelled values at 60 min':'Endpoint values withheld');setText('budget-time',complete?'· 60 min':'· no complete endpoint');
+   setText('evidence-line',displayEvidence(current));
    if(complete)renderOutputs(r);
    else{clearOutputs();$('outcome').dataset.state='none';setText('balance-status',current.status==='unsupported'?'Outside the model’s processes':'Numerical calculation failed');setText('storage-value','No 60-minute result');setText('balance-explanation',current.status==='unsupported'?'This exposure was not completed. No endpoint comparison is available. Any partial trace ends at the last supported time.':'The equations could not be evaluated reliably. Temperatures were not clamped and no endpoint is shown.');setText('boundary',current.reason);}
    const p=current.inputs,chill=H.windChill(p.temperature,p.wind);$('wind-chill-panel').hidden=p.temperature>0;
@@ -917,6 +991,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   showView(view);pending();drawChart();comparisonTable();
  }
  function svgEl(name,attrs={},text){const e=document.createElementNS('http://www.w3.org/2000/svg',name);for(const[k,v]of Object.entries(attrs))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;return e;}
+ // RC2: repair only the final x-label when its original narrow-chart position collides.
+ function fitChartLabels(){
+  const svg=$('chart-holder').querySelector('svg');
+  if(!svg||svg.viewBox.baseVal.width!==300)return;
+  const labels=[...svg.querySelectorAll('text')];
+  for(const last of labels.filter(t=>t.textContent==='60 min')){
+   const previous=labels.find(t=>t.textContent==='45'&&t.getAttribute('y')===last.getAttribute('y'));
+   if(!previous)continue;
+   const a=previous.getBBox(),b=last.getBBox(),originalLeft=b.x+279-(+last.getAttribute('x'));
+   const collision=Math.min(a.x+a.width,originalLeft+b.width)>Math.max(a.x,originalLeft)&&Math.min(a.y+a.height,b.y+b.height)>Math.max(a.y,b.y);
+   const x=collision?291:279;
+   if(+last.getAttribute('x')!==x)last.setAttribute('x',x);
+  }
+ }
  function drawChart(){
   const host=$('chart-holder');
   if(!current)return;
@@ -931,31 +1019,31 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    let lo=Math.min(...vals),hi=Math.max(...vals),mid=(lo+hi)/2,span=Math.max(panel.minSpan,(hi-lo)*1.22);lo=mid-span/2;hi=mid+span/2;
    const step=span<=1.6?.25:span<=3?.5:span<=6?1:span<=12?2:5;lo=Math.floor(lo/step)*step;hi=Math.ceil(hi/step)*step;
    const x=t=>left+t/3600*plotWidth,y=t=>bottom-(t-lo)/(hi-lo)*(bottom-top);
-   svg.append(svgEl('text',{x:left,y:top-12,fill:color,'font-size':12,'font-weight':600},panel.name));
-   for(let i=0;i<=4;i++){const v=lo+(hi-lo)*i/4,yy=y(v);svg.append(svgEl('line',{x1:left,x2:width-right,y1:yy,y2:yy,stroke:'#D2D5CC','stroke-width':.7}));svg.append(svgEl('text',{x:left-8,y:yy+4,'text-anchor':'end','font-size':11,fill:'#5F6B6F'},v.toFixed(1)));}
-   for(const minute of [0,15,30,45,60]){const xx=x(minute*60);svg.append(svgEl('text',{x:xx,y:bottom+16,'text-anchor':'middle','font-size':11,fill:'#5F6B6F'},minute===60?'60 min':String(minute)));}
+   svg.append(svgEl('text',{x:left,y:top-12,fill:color,'font-size':14,'font-weight':600},panel.name));
+   for(let i=0;i<=4;i++){const v=lo+(hi-lo)*i/4,yy=y(v);svg.append(svgEl('line',{x1:left,x2:width-right,y1:yy,y2:yy,stroke:'#D2D5CC','stroke-width':.7}));svg.append(svgEl('text',{x:left-8,y:yy+4,'text-anchor':'end','font-size':14,fill:'#5F6B6F'},v.toFixed(1)));}
+   for(const minute of [0,15,30,45,60]){const xx=x(minute*60);svg.append(svgEl('text',{x:xx,y:bottom+16,'text-anchor':minute===0?'start':minute===60?'end':'middle','font-size':14,fill:'#5F6B6F'},minute===60?'60 min':String(minute)));}
    for(const[run,isRef]of [[reference,true],[current,false]]){
     if(!run||!run.history.length)continue;
     const path=run.history.map((v,i)=>`${i?'L':'M'}${x(v.time).toFixed(2)} ${y(v[key]).toFixed(2)}`).join(' ');
-    svg.append(svgEl('path',{d:path,fill:'none',stroke:color,'stroke-width':isRef?2:2.3,'stroke-dasharray':isRef?'6 5':'none',opacity:isRef?.58:1}));
+    svg.append(svgEl('path',{d:path,fill:'none',stroke:color,'stroke-width':isRef?2:2.3,'stroke-dasharray':isRef?'6 5':'none',opacity:isRef?.85:1}));
     const end=run.history.at(-1);svg.append(svgEl(isRef?'rect':'circle',isRef?{x:x(end.time)-3,y:y(end[key])-3,width:6,height:6,fill:'#FFFDF8',stroke:color}:{cx:x(end.time),cy:y(end[key]),r:3,fill:color}));
    }
   }
-  host.append(svg);$('history-values').hidden=!current.history.length;
+  host.append(svg);fitChartLabels();$('history-values').hidden=!current.history.length;
   const rows=current.history.filter(x=>x.time%600===0||x===current.history.at(-1));
   $('history-table').innerHTML='<table><caption>Current run values; reference values use the same elapsed time where available.</caption><thead><tr><th>Minute</th><th>Core °C</th><th>Skin °C</th>'+(reference?'<th>Ref core °C</th><th>Ref skin °C</th>':'')+'</tr></thead><tbody>'+rows.map(x=>{const ref=reference?.history.find(v=>Math.abs(v.time-x.time)<1e-8);return `<tr><th scope="row">${(x.time/60).toFixed(0)}</th><td>${x.core.toFixed(2)}</td><td>${x.skin.toFixed(2)}</td>${reference?`<td>${ref?ref.core.toFixed(2):'—'}</td><td>${ref?ref.skin.toFixed(2):'—'}</td>`:''}</tr>`;}).join('')+'</tbody></table>';
   setText('chart-note','Core and skin use separate, labelled temperature scales. Compared runs share the scale within each panel.'+(current.status!=='complete'?' Current exposure is incomplete; no line is extended beyond calculated values.':''));
  }
  function comparisonTable(){
   const host=$('endpoint-comparison'),r=current?.endpoint,b=reference?.endpoint;host.hidden=!(r&&b);if(!r||!b)return;
-  const rows=[['Core temperature','core','°C',2],['Mean skin temperature','skin','°C',2],['Skin blood-flow variable','blood','L/(m²·h)',2],['Shivering heat','shivering','W',0],['Sweat secretion','secretion','g/h',0],['Skin evaporation','evaporation','W',0],['Net heat storage rate','storage','W',0]];
+  const rows=[['Core temperature','core','°C',2],['Mean skin temperature','skin','°C',2],['Skin blood-flow variable','blood','L/(m²·h)',2],['Shivering heat','shivering','W',0],['Sweat secretion','secretion','g/h',0],['Skin evaporation','evaporation','W',0],['Whole-body net heat-storage rate','storage','W',0]];
   host.innerHTML='<table><caption>Endpoint comparison · both at 60 minutes. Differences are current minus reference.</caption><thead><tr><th>Model output</th><th>Current</th><th>Reference</th><th>Difference</th></tr></thead><tbody>'+rows.map(([name,key,unit,dec])=>`<tr><th scope="row">${name} <small>(${unit})</small></th><td>${r[key].toFixed(dec).replace('-','−')}</td><td>${b[key].toFixed(dec).replace('-','−')}</td><td>${signed(r[key]-b[key],dec)}</td></tr>`).join('')+'</tbody></table>';
  }
  async function run(){
-  if(busy)return;busy=true;const input={...read()};$('run-exposure').disabled=true;$('keep-run').disabled=true;$('run-exposure').textContent='Calculating…';
+  if(busy)return;busy=true;$('inspect-figure').disabled=true;const input={...read()};$('run-exposure').disabled=true;$('keep-run').disabled=true;$('run-exposure').textContent='Calculating…';
   await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
-  try{current={...H.simulate(input),id:++serial};renderRun();announce(current.endpoint?`Run ${current.id} complete. ${conditions(current.inputs)}. At 60 minutes, core ${temp(current.endpoint.core,2)}, mean skin ${temp(current.endpoint.skin,2)}, shivering ${watts(current.endpoint.shivering)}, sweat secretion ${Math.round(current.endpoint.secretion)} grams per hour, evaporated sweat ${Math.round(current.endpoint.evaporatedSweat)} grams per hour. Net storage rate ${signed(current.endpoint.storage)} watts. ${current.evidence.join(' ')}`:`Exposure incomplete. ${current.reason}`);}
-  finally{busy=false;$('run-exposure').disabled=false;$('run-exposure').textContent='Run exposure · 60 min';$('keep-run').disabled=!current?.endpoint;}
+  try{current={...H.simulate(input),id:++serial};renderRun();announce(current.endpoint?`Run ${current.id} complete. ${conditions(current.inputs)}. At 60 minutes, core ${temp(current.endpoint.core,2)}, mean skin ${temp(current.endpoint.skin,2)}, shivering ${watts(current.endpoint.shivering)}, sweat secretion ${Math.round(current.endpoint.secretion)} grams per hour, evaporated sweat ${Math.round(current.endpoint.evaporatedSweat)} grams per hour. Whole-body net heat-storage rate at 60 minutes: ${zero(current.endpoint.storage)?'Approximately 0 W':signed(current.endpoint.storage)+' watts'}. ${displayEvidence(current)}`:`Exposure incomplete. ${current.reason}`);}
+  finally{busy=false;$('inspect-figure').disabled=false;$('run-exposure').disabled=false;$('run-exposure').textContent='Run exposure · 60 min';$('keep-run').disabled=!current?.endpoint;}
  }
  for(const preset of H.presets){const b=document.createElement('button');b.type='button';b.className='preset';b.dataset.preset=preset.id;b.setAttribute('aria-pressed','false');b.innerHTML=`<strong>${preset.name}</strong><span>${temp(preset.temperature,0)} · ${preset.humidity}% RH · ${preset.wind.toFixed(1)} m/s</span>${preset.temperature<0?'<small>Exploratory cold exposure</small>':''}`;b.title='Prepare these conditions at Rest; press Run exposure to apply.';b.addEventListener('click',()=>setConditions(Object.fromEntries(keys.map(k=>[k,preset[k]]))));$('presets').append(b);}
  for(const k of keys)$(k).addEventListener(k==='activity'?'change':'input',()=>pending(true));
@@ -967,6 +1055,102 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
  $('prompt-choice').addEventListener('change',()=>setText('prompt',prompts[$('prompt-choice').value]));
  $('open-notes').addEventListener('click',()=>$('model-notes').showModal());$('wind-info').addEventListener('click',()=>$('wind-dialog').showModal());
  let resizeTimer;addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(current?.endpoint){const r=current.endpoint;for(const k of ['radiation','convection','evaporation'])flow(k,r[k]);}drawChart();},80);});
+ // Gate 1C presentation only: one live figure, measured annotation fit, no experiment writes.
+ const inspection=$('figure-inspector'),inspectButton=$('inspect-figure'),figure=$('figure-presentation'),pan=$('figure-pan');
+ const roomier=[
+  ['radiation-label',18,139,274,104],['convection-label',433,140,274,104],
+  ['evaporation-label',14,374,274,124],['conduction-label',483,441,224,96],
+  ['metabolic-label',238,267,244,93],['core-label',236,180,248,91],
+  ['skin-label',14,280,280,110],['transfer-label',424,280,288,124],['clothing-label',207,422,306,85]
+ ].map(([id,x,y,w,h])=>{
+  const group=$(id),rect=group.querySelector('rect');
+  return {group,rect,x,y,w,h,compact:{transform:group.getAttribute('transform'),w:+rect.getAttribute('width'),h:+rect.getAttribute('height')},
+   texts:[...group.querySelectorAll('text')].map(text=>({text,x:+text.getAttribute('x')}))};
+ });
+ const leaderMap=[
+  ['radiation-arrow','M318 216 Q215 280 215 260'],['radiation-halo','M318 216 Q215 280 215 260'],
+  ['convection-arrow','M402 233 Q505 280 505 261'],['convection-halo','M402 233 Q505 280 505 261'],
+  ['evaporation-arrow','M313 333 Q334 414 304 414'],['evaporation-halo','M313 333 Q334 414 304 414'],
+  ['conduction-arrow','M390 510 L470 490'],['conduction-halo','M390 510 L470 490'],
+  ['skin-link','M326 227 Q306 275 294 300'],['transfer-link','M397 227 Q414 259 424 300']
+ ].map(([id,wide])=>({path:$(id),wide,compact:$(id).getAttribute('d')}));
+ let figureFrame=0,placeholder=null,returnPosition=null;
+ function mirrorFigureValues(){
+  if(!inspection.open)return;
+  const ids=view==='exchange'?['radiation-label','convection-label','evaporation-label','conduction-label','metabolic-label']:['core-label','skin-label','clothing-label','transfer-label'];
+  const dl=document.createElement('dl');
+  for(const id of ids){
+   const lines=[...$(id).querySelectorAll('text')].map(e=>e.textContent);
+   const dt=document.createElement('dt'),dd=document.createElement('dd');
+   dt.textContent=lines.shift();dd.textContent=lines.join(' · ');dl.append(dt,dd);
+  }
+  $('figure-values-content').replaceChildren(dl);
+  $('figure-scroll-hint').hidden=pan.scrollWidth<=pan.clientWidth+1;
+ }
+ function fitFigureAnnotations(){
+  figureFrame=0;fitChartLabels();
+  const overlay=view==='exchange'?document.querySelector('.scientific-overlay'):$('phys-overlay');
+  if(!overlay.getBoundingClientRect().width)return;
+  const cards=roomier.filter(c=>overlay.contains(c.group));
+  // Compare to the immutable compact alignment, even while the wider map is applied.
+  const expanded=cards.some(c=>c.texts.some(({text,x})=>{
+   const b=text.getBBox(),compactLeft=b.x+x-(+text.getAttribute('x'));
+   return compactLeft<-.5||compactLeft+b.width>c.compact.w+.5;
+  }));
+  overlay.dataset.annotationLayout=expanded?'roomier':'compact';
+  for(const c of cards){
+   c.group.setAttribute('transform',expanded?`translate(${c.x} ${c.y})`:c.compact.transform);
+   c.rect.setAttribute('width',expanded?c.w:c.compact.w);c.rect.setAttribute('height',expanded?c.h:c.compact.h);
+   for(const {text,x} of c.texts)text.setAttribute('x',expanded&&text.getAttribute('text-anchor')==='middle'?c.w/2:x);
+  }
+  for(const link of leaderMap)if(overlay.contains(link.path))link.path.setAttribute('d',expanded?link.wide:link.compact);
+  mirrorFigureValues();
+ }
+ function scheduleFigureFit(){if(!figureFrame)figureFrame=requestAnimationFrame(fitFigureAnnotations);}
+ function openFigure(){
+  if(busy||inspection.open)return;
+  returnPosition={x:scrollX,y:scrollY,width:innerWidth,height:innerHeight};
+  placeholder=document.createElement('div');placeholder.setAttribute('aria-hidden','true');
+  placeholder.style.height=figure.getBoundingClientRect().height+'px';placeholder.style.flex='1 0 auto';
+  figure.before(placeholder);$('figure-inspector-host').append(figure);
+  setText('figure-inspector-title','Inspect figure — '+(view==='exchange'?'Heat Exchange':'Physiological Response'));
+  setText('figure-run-context',current?$('current-description').innerText:'Preview · no exposure run');
+  $('figure-pending-context').hidden=!current||same(read(),current.inputs);
+  $('figure-reference-context').hidden=!reference;
+  setText('figure-reference-identity',reference?$('reference-description').innerText:'');
+  setText('figure-model-status',$('model-status').textContent);
+  setText('figure-incomplete-context',current&&current.status!=='complete'?[$('balance-status').textContent,$('balance-explanation').textContent,$('boundary').textContent].join(' '):'');
+  $('figure-incomplete-context').hidden=!current||current.status==='complete';
+  pan.tabIndex=0;pan.setAttribute('role','region');pan.setAttribute('aria-label','Scientific figure inspection area');
+  inspection.showModal();inspection.scrollTop=0;pan.scrollLeft=0;$('figure-values').open=false;
+  fitFigureAnnotations();$('close-figure').focus({preventScroll:true});
+ }
+ function restoreFigure(){
+  if(!placeholder)return;
+  placeholder.replaceWith(figure);placeholder=null;
+  pan.removeAttribute('tabindex');pan.removeAttribute('role');pan.removeAttribute('aria-label');
+  $('figure-values').open=false;$('figure-values-content').replaceChildren();
+  for(const id of ['figure-run-context','figure-reference-identity','figure-model-status','figure-incomplete-context'])setText(id,'');
+  fitFigureAnnotations();inspectButton.focus({preventScroll:true});
+  if(returnPosition.width===innerWidth&&returnPosition.height===innerHeight)scrollTo(returnPosition.x,returnPosition.y);
+  else inspectButton.scrollIntoView({block:'nearest'});
+  returnPosition=null;
+ }
+ function closeFigure(){if(inspection.open)inspection.close();restoreFigure();}
+ inspectButton.addEventListener('click',openFigure);
+ $('close-figure').addEventListener('click',closeFigure);
+ inspection.addEventListener('cancel',e=>{e.preventDefault();closeFigure();});
+ inspection.addEventListener('close',restoreFigure);
+ new ResizeObserver(scheduleFigureFit).observe($('stage'));
+ // Observe presentation text and user-style changes, not our geometry writes or mirrored HTML.
+ new MutationObserver(records=>{
+  if(records.some(r=>r.type==='characterData'&&$('stage').contains(r.target)||
+   r.type==='childList'&&($('stage').contains(r.target)||r.target.closest?.('style')||[...r.addedNodes,...r.removedNodes].some(n=>n.nodeType===1&&(n.matches('style,link[rel="stylesheet"]')||n.querySelector('style,link[rel="stylesheet"]'))))||
+   r.type==='attributes'&&(['class','style','hidden'].includes(r.attributeName))&&!inspection.contains(r.target)&&!r.target.closest?.('#chart-holder')))scheduleFigureFit();
+ }).observe(document.documentElement,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['class','style','hidden']});
+ document.fonts.ready.then(scheduleFigureFit);document.fonts.addEventListener('loadingdone',scheduleFigureFit);
+ addEventListener('resize',scheduleFigureFit);
+
  // Read-only inspection hook used by the verification harness; no persistence or telemetry.
  Object.defineProperty(window,'BIOL3216',{value:Object.freeze({snapshot:()=>structuredClone({current,reference,pending:read(),view})})});
  pending();renderRun();
